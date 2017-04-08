@@ -17,6 +17,9 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    <link href="http://cdn.phpoll.com/css/animate.css" rel="stylesheet">
+    <ling href="https://daneden.github.io/animate.css/" rel="stylesheet">
+
     <!-- Theme CSS -->
     <link href="css/agency.min.css" rel="stylesheet">
 </head>
@@ -44,19 +47,49 @@
                         <a class="page-scroll" href="#home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#find">Find</a>
+                        <a class="page-scroll" href="#allCars">All Cars</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#sell">Sell</a>
+                        <a class="page-scroll" href="#find">Find cars</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#sell">Sell Car</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact Us</a>
                     </li>
-                    <li>
-                        <a class="flex-sm-fill text-sm-center nav-link active" href="#register">Login/Register</a>
+                    <li class="dropdown">
+                        <a href="http://phpoll.com/login" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                            <div class="col-lg-12">
+                                <div class="text-center"><h3><b>Login</b></h3></div>
+                                <form id="ajax-login-form" action="http://phpoll.com/login/process" method="post" role="form" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <input type="checkbox" tabindex="3" name="remember" id="remember">
+                                                <label for="remember"> Remember Me</label>
+                                            </div>
+                                            <div class="col-xs-5 pull-right">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                                </form>
+                            </div>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -70,51 +103,151 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">Welcome To Our Cars Dealers WebSite!</div>
-                <a href="#services" class="page-scroll btn btn-xl">More About Us</a>
             </div>
         </div>
     </header>
 
-    <section id="find">
+    <section id="allCars">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">All offers</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+
+                <!-- Add the extra clearfix for only the required viewport -->
+                <div class="clearfix hidden-sm-up"></div>
+
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+            </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="find" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Find your car</h2>
-                    <form role="form">
+                    <form method="post" data-form-output="form-output-global" class="rd-mailform text-left" novalidate="novalidate">
+
                     <div class="row">
-                    <div class="col-6 col-md-4">
-                          <div class="form-group">
-                            <label for="main_cat">Select A Manufacturer: <i class="fa fa-question-circle" aria-hidden="true"></i></label>
-                            <select class="form-control">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                            </select>
-                          </div>
-                       </div>
-                       <div class="col-6 col-md-4">
-                          <div class="form-group">
-                            <label for="main_cat">Select Model: <i class="fa fa-question-circle" aria-hidden="true"></i></label>
-                              <select class="form-control">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                              </select>
-                          </div>
-                       </div>
-                       <div class="col-6 col-md-4">
-                          <div class="form-group">
-                            <label for="main_cat">Select price range: <i class="fa fa-question-circle" aria-hidden="true"></i></label>
-                              <select class="form-control">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                              </select>
-                          </div>
-                       </div>
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                          <label for="form-car-search-make" class="form-label form-label-outside rd-input-label focus not-empty">Make:</label>
+                          <select id="form-car-search-make" name="make" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="1">Enter car make...</option>
+                            <option value="2">Audi</option>
+                            <option value="3">Acura</option>
+                            <option value="4">BMW</option>
+                            <option value="5">Chevrolet</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                          <label for="form-car-search-model" class="form-label form-label-outside rd-input-label focus not-empty">Model:</label>
+                          <select id="form-car-search-model" name="model" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="1">Enter model</option>
+                            <option value="2">x2 series</option>
+                            <option value="3">x3 series</option>
+                            <option value="4">x4 series</option>
+                            <option value="5">x5 series</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                        <label for="form-car-search-country" class="form-label form-label-outside rd-input-label focus not-empty">Country:</label>
+                        <select id="form-car-search-country" name="country" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                          <option value="1">Country</option>
+                          <option value="2">USA</option>
+                          <option value="3">Germany</option>
+                          <option value="4">Italy</option>
+                          <option value="5">Japan</option>
+                        </select>
+                        </div>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block te" >Prices &amp; Availability</button>
-                </form>
+                    <div class="row">
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                        <label for="form-car-search-city" class="form-label form-label-outside rd-input-label focus not-empty">City</label>
+                        <select id="form-car-search-city" name="city" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                          <option value="1">City name</option>
+                          <option value="2">Tokio</option>
+                          <option value="3">Munchen</option>
+                          <option value="4">New York</option>
+                          <option value="5">Milan</option>
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-4">
+                        <div class="form-group">
+                        <label for="form-car-search-body-type" class="form-label form-label-outside rd-input-label focus not-empty">Body Type:</label>
+                        <select id="form-car-search-body-type" name="body-type" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                          <option value="1">Enter</option>
+                          <option value="2">Hatchback</option>
+                          <option value="3">Mini-MPVs</option>
+                          <option value="4">Crossovers</option>
+                          <option value="5">Coupes</option>
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-lg-2">
+                        <div class="form-group">
+                          <label for="form-car-search-min-year" class="form-label form-label-outside rd-input-label"> Min Year:</label>
+                          <input id="form-car-search-min-year" type="text" name="min-year" placeholder="0" data-constraints="@Required @IsNumeric" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-lg-2">
+                        <div class="form-group">
+                          <label for="form-car-search-max-year" class="form-label form-label-outside rd-input-label"> Max Year:</label>
+                          <input id="form-car-search-max-year" type="text" name="max-year" placeholder="0" data-constraints="@Required @IsNumeric" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-3 col-lg-3">
+                        <div class="form-group">
+                        <label for="form-quote-color" class="form-label form-label-outside rd-input-label focus not-empty">Color</label>
+                        <select id="form-quote-color" name="color" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                          <option value="1">No</option>
+                          <option value="2">Black</option>
+                          <option value="3">White</option>
+                          <option value="4">Red</option>
+                          <option value="5">Blue</option>
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-lg-2">
+                        <div class="form-group">
+                          <label for="form-quote-height" class="form-label form-label-outside rd-input-label"> Min Price:</label>
+                          <input id="form-quote-height" type="text" name="height" placeholder="0" data-constraints="@Required @IsNumeric" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-lg-2">
+                        <div class="form-group">
+                          <label for="form-quote-width" class="form-label form-label-outside rd-input-label"> Max Price:</label>
+                          <input id="form-quote-width" type="text" name="width" placeholder="1" data-constraints="@Required @IsNumeric" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                        </div>
+                      </div>
+                      <!-- <div class="col-sm-3 col-lg-2"><a href="calculate.html" class="btn btn-primary btn-md">calculate</a></div> -->
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-12">
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary" >Search your car</button>
+                      </div>
+                    </div>
+                    </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -124,315 +257,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Round Icons</h4>
-                        <p class="text-muted">Graphic Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Startup Framework</h4>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Treehouse</h4>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/golden.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Golden</h4>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/escape.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Escape</h4>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Dreams</h4>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients Aside -->
-    <aside class="clients">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </aside>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -688,6 +512,7 @@
             </div>
         </div>
     </div>
+ 
     </div>
     </form>
     <!-- jQuery -->
